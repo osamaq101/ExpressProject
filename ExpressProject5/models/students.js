@@ -49,10 +49,17 @@ export default class Student {
         }
     }
 
-    static sortBy(field, order) {
-        return Student.getAll().sort((e1, e2) =>
-            (typeof e1[field] === 'number') ?
-                order * (e1[field] - e2[field]) : order * e1[field].localeCompare(e2[field]))
+    //static sortBy(field, order) {
+    //    return Student.getAll().sort((e1, e2) =>
+    //        (typeof e1[field] === 'number') ?
+    //            order * (e1[field] - e2[field]) : order * e1[field].localeCompare(e2[field]))
+    //}
+    static sortBy(studentsList, sortBy, sortOrder) {
+        return studentsList.sort((a, b) => {
+            if (a[sortBy] > b[sortBy]) return sortOrder;
+            if (a[sortBy] < b[sortBy]) return -sortOrder;
+            return 0;
+        });
     }
 
     static filterByProgram(program) {

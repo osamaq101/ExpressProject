@@ -11,6 +11,7 @@ router.route('/:id').get(studentController.StudentById);
 router.route('/').post(express.json(), studentController.createStudent);
 //router.route('/').post(express.json(), studentController.updateStudentById);
 router.route('/:updateStudentById/:id').put(express.json(), studentController.updateStudentById);
+router.route('/:id').delete(express.json(), studentController.deleteStudentById)
 
 
 export default router;

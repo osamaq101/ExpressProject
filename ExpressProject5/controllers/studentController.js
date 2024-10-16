@@ -65,8 +65,9 @@ const studentController = {
         const { sort, order = 'asc', program } = req.query;
         if (sort && program) {
             let filteredStudents = Student.filterByProgram(program);
-            let students = filteredStudents.sortBy(sort, order === 'asc' ? 1 : -1);
-            res.status(200).json(students);
+            let sortedStudents = Student.sortBy(filteredStudents, sort, order === 'asc' ? 1 : -1);
+            res.status(200).json(sortedStudents);
+          
         }
         else if (sort) {
             let students = Student.sortBy(sort, order === 'asc' ? 1 : -1);
